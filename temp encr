@@ -1,0 +1,46 @@
+from random import randint
+
+start = 1
+end = 10
+kay_computer = randint(start, end)
+LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LETTERS = LETTERS.lower()
+
+
+def enc(password, key_computer):
+    new_passw = ''  # פותח סטרינג חדש
+    for ch in password:  # עובר  תו תו על מה שהכנסנו
+        if ch in LETTERS:  # בודק ב תו אחד כל פעם
+            num = LETTERS.find(ch)  # מכניס ל num מלטר את התו שהוא חיפש את המיקום של התו
+            num += key_computer  # הוא מוסיף לתו שמצאנו פפלוס הקיי שנבחר וזה יהיה בעצם המיקם
+            new_passw += LETTERS[num]  # הסארינג החדש יקח את לטר במיקום שמצאנו ויכניס ל new
+    return new_passw
+
+
+def dec(new_passw, key_to_you):
+    new_password_descript = ' '
+    for ch in new_password_encript:  # עובר  תו תו על מה שהכנסנו
+        if ch in LETTERS:  # בודק ב תו אחד כל פעם
+            num = LETTERS.find(ch)  # מכניס ל num מלטר את התו שהוא חיפש את המיקום של התו
+            num -= key_to_you  # הוא מחסיר לתו שמצאנו פפלוס הקיי שנבחר וזה יהיה בעצם המיקם
+            new_password_descript += LETTERS[num]  # הסארינג החדש יקח את לטר במיקום שמצאנו ויכניס ל new
+            return new_password_decript
+
+
+def main():
+    print("a computer choose key :")
+    print(kay_computer)
+    print("................-......................................")
+    password = str(input("please enter text to encrypt:"))
+    print(enc(password, kay_computer))
+    decryptt = str(input("you can decrip open encrypt  type 'y' / Y"))
+
+    #if decryptt == 'y' or 'Y':
+     #   print(dec(new_passw, decryptt))
+
+    else:
+        exit()
+
+
+if __name__ == '__main__':
+    main()
